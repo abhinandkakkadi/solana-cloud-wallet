@@ -4,19 +4,16 @@ const config = require('./config');
 const { errorHandler } = require('./middleware/errorHandler');
 const pool = require('./config/database');
 
-// Import routes
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
 const walletRoutes = require('./routes/walletRoutes');
 
 const app = express();
 
-// Middleware
 app.use(cors(config.CORS_OPTIONS));
 app.options("*", cors(config.CORS_OPTIONS));
 app.use(express.json());
 
-// Routes
 app.use('/api', authRoutes);
 app.use('/api', userRoutes);
 app.use('/api', walletRoutes);

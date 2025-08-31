@@ -26,18 +26,19 @@ class WalletController {
 
   static async createTransaction(req, res, next) {
     try {
-      const { uid, amount } = req.body;
+      const { walletUid, amount, dstAddress } = req.body;
 
-      if (!uid || !amount) {
+      if (!walletUid || !amount || !dstAddress) {
         return res.status(400).json({ error: "invalid_request" });
       }
 
-      // TODO: Implement transaction creation logic
-      // const transactionId = await TransactionService.create(uid, amount);
+      const result = await WalletService.sendTransaction(req.user.userId, walletUid, amount, dstAddress);
 
       res.json({
         message: "Transaction created successfully",
-        // transactionId,
+        data: {
+            hash: result.hash
+        },
       });
     } catch (error) {
       next(error);

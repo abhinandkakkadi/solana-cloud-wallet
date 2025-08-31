@@ -4,6 +4,7 @@ module.exports = {
   PORT: process.env.PORT || 3000,
   JWT_SECRET: process.env.JWT_SECRET || "your-secret-key-here",
   ENCRYPTION_KEY: "my-secret-key-32-characters-long",
+  SOLANA_RPC_URL: "https://api.devnet.solana.com",
   CORS_OPTIONS: {
     origin: [
       "http://localhost:3000",

@@ -7,6 +7,12 @@ class Wallet {
     return result.rows;
   }
 
+  static async findByUid(uid) {
+    const query = "SELECT * FROM wallets WHERE uid = $1";
+    const result = await pool.query(query, [uid]);
+    return result.rows[0];
+  }
+
   static async create(userId, index, chain) {
     const query = `
       INSERT INTO wallets (user_id, account_index, chain, uid, created_at, updated_at) 
