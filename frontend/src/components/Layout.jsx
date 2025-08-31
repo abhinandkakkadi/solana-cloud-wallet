@@ -16,24 +16,30 @@ const Layout = ({ children }) => {
           </Link>
 
           <nav className="nav">
-            <Link
-              to="/"
-              className={
-                location.pathname === "/" ? "nav-link active" : "nav-link"
-              }
-            >
-              Home
-            </Link>
-            <Link
-              to="/dashboard"
-              className={
-                location.pathname === "/dashboard"
-                  ? "nav-link active"
-                  : "nav-link"
-              }
-            >
-              Dashboard
-            </Link>
+            {isAuthenticated() && (
+              <Link
+                to="/wallet"
+                className={
+                  location.pathname === "/wallet"
+                    ? "nav-link active"
+                    : "nav-link"
+                }
+              >
+                Wallet
+              </Link>
+            )}
+            {isAuthenticated() && (
+              <Link
+                to="/transfer"
+                className={
+                  location.pathname === "/transfer"
+                    ? "nav-link active"
+                    : "nav-link"
+                }
+              >
+                Transfer
+              </Link>
+            )}
           </nav>
 
           {!isAuthenticated() && (

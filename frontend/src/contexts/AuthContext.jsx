@@ -49,7 +49,7 @@ export const AuthProvider = ({ children }) => {
     try {
       setLoading(true);
       
-      const response = await fetch('http://localhost:3000/signin', {
+      const response = await fetch('http://localhost:3000/api/signin', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -71,7 +71,7 @@ export const AuthProvider = ({ children }) => {
       localStorage.setItem('authToken', authToken);
       localStorage.setItem('authUser', JSON.stringify(userData));
 
-      navigate('/dashboard');
+      navigate('/wallet');
       
       return { success: true };
     } catch (error) {
@@ -86,7 +86,7 @@ export const AuthProvider = ({ children }) => {
     try {
       setLoading(true);
       
-      const response = await fetch('http://localhost:3000/signup', {
+      const response = await fetch('http://localhost:3000/api/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -108,7 +108,7 @@ export const AuthProvider = ({ children }) => {
       localStorage.setItem('authToken', authToken);
       localStorage.setItem('authUser', JSON.stringify(userData));
 
-      navigate('/dashboard');
+      navigate('/wallet');
       
       return { success: true };
     } catch (error) {
@@ -147,7 +147,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     try {
-      const response = await fetch("http://localhost:3000"+url, defaultOptions);
+      const response = await fetch("http://localhost:3000/api"+url, defaultOptions);
       
       if (response.status === 401) {
         logout();

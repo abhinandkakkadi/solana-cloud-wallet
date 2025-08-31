@@ -10,6 +10,8 @@ const SignIn = () => {
     password: ''
   });
 
+  const { login, loading } = useAuth();
+
   const handleInputChange =  (e) => {
     setFormData({
       ...formData,
@@ -19,7 +21,6 @@ const SignIn = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Sign in attempt:', formData);
 
     setFormData({
       email: '',
