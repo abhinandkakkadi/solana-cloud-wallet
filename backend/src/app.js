@@ -8,7 +8,6 @@ const pool = require('./config/database');
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
 const walletRoutes = require('./routes/walletRoutes');
-const adminRoutes = require('./routes/adminRoutes');
 
 const app = express();
 
@@ -21,7 +20,6 @@ app.use(express.json());
 app.use('/api', authRoutes);
 app.use('/api', userRoutes);
 app.use('/api', walletRoutes);
-app.use('/api', adminRoutes);
 
 // Health check routes
 app.get("/", (req, res) => {
