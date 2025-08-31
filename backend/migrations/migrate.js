@@ -17,14 +17,11 @@ const runMigration = async (filename, sqlContent) => {
   try {
     await client.query("BEGIN");
 
-    // Execute the migration SQL
     await client.query(sqlContent);
 
     await client.query("COMMIT");
-    console.log(`✅ Migration ${filename} executed successfully`);
   } catch (error) {
     await client.query("ROLLBACK");
-    console.error(`❌ Migration ${filename} failed:`, error.message);
     throw error;
   } finally {
     client.release();
@@ -33,9 +30,6 @@ const runMigration = async (filename, sqlContent) => {
 
 const runMigrations = async () => {
   try {
-    console.log("🚀 Starting database migrations...");
-
-    // Define migrations in order
     const migrations = [
       {
         filename: "001_create_users_table.sql",
@@ -96,21 +90,18 @@ const runMigrations = async () => {
       },
     ];
 
-    // Run pending migrations
     for (const migration of migrations) {
       await runMigration(migration.filename, migration.sql);
     }
 
     console.log("✅ All migrations completed successfully");
   } catch (error) {
-    console.error("❌ Migration failed:", error);
     process.exit(1);
   } finally {
     await pool.end();
   }
 };
 
-// CLI interface
 const command = process.argv[2];
 
 switch (command) {
