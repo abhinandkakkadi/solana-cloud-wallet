@@ -7,8 +7,6 @@ A web-based application for signing and sending Solana transactions securely.
 - Create and manage Solana wallets
 - Sign transactions securely
 - Send SOL 
-- View transaction history
-- Real-time balance updates
 
 ## Installation
 

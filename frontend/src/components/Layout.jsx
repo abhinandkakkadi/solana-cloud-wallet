@@ -73,7 +73,7 @@ const Layout = ({ children }) => {
 
       <footer className="footer">
         <div className="footer-content">
-          <p>&copy; 2024 CryptoRamp. All rights reserved.</p>
+          <p>Crafted by Abhinand K R</p>
         </div>
       </footer>
     </div>
