@@ -29,12 +29,12 @@ class AuthService {
   static async signin(email, password) {
     const user = await User.findByEmail(email);
     if (!user) {
-      throw new Error('Invalid credentials');
+      throw new Error('invalid_email');
     }
 
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
-      throw new Error('Invalid credentials');
+      throw new Error('invalid_password');
     }
 
     const token = this.generateToken(user.id, user.email);
